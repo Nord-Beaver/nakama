@@ -8480,15 +8480,16 @@ func (n *RuntimeJavascriptNakamaModule) localcachePut(r *goja.Runtime) func(goja
 			panic(r.NewTypeError("ttl must be 0 or more"))
 		}
 
-		v := value.Export()
+		// v := value.Export()
 
-		switch v.(type) {
-		case string, int64, float64, bool:
-		default:
-			panic(r.NewTypeError("unsupported value type: must be string, numeric or boolean"))
-		}
+		// switch v.(type) {
+		// case string, int64, float64, bool:
+		// default:
+		// 	panic(r.NewTypeError("unsupported value type: must be string, numeric or boolean"))
+		// }
 
-		n.localCache.Put(key, v, ttl)
+		// n.localCache.Put(key, v, ttl)
+		n.localCache.Put(key, value.Export(), ttl)
 
 		return goja.Undefined()
 	}
